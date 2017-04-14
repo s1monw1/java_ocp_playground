@@ -1,0 +1,6 @@
+hello world
+this is me
+a simple text file
+welcome to this very
+special content!
+the end

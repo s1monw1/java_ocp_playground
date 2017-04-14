@@ -1,0 +1,3 @@
+I am printing to a file using PrintWriter
+This is a formatted line with a simple string: inserted string
+This is a formatted line with numbers:     +14,52 ,28
