@@ -1,11 +1,8 @@
 package de.swirtz.playground.io;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.*;
 import java.util.Arrays;
 
 /**
@@ -24,7 +21,7 @@ public class FIOReadExamples {
         }
 
     }
-
+    
     private static void readWithBuffered() throws IOException {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(getFilePath("test.txt")))) {
             StringBuilder content = new StringBuilder("");

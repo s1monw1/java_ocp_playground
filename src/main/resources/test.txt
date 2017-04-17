@@ -3,4 +3,5 @@ this is me
 a simple text file
 welcome to this very
 special content!
-the end
+the endMy new file content written with FileWriter
+My new file content written with FileWriter

@@ -1,19 +1,21 @@
 package de.swirtz.playground.io;
 
 import java.io.*;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 
 /**
  * Created by simonw on 13.04.17.
  */
-public class FIOWriteExamples extends FIOReadExamples{
+public class FIOWriteExamples extends FIOReadExamples {
 
     public static void main(String[] args) {
         try {
 //            writeWithFileWriter();
 //            writeWithBufferedFileWriter();
-            writeWithEasyPrintWriter();
+            writeWithBufferedFileWriterFromFiles();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -28,9 +30,21 @@ public class FIOWriteExamples extends FIOReadExamples{
         }
     }
 
+
+    private static void writeWithBufferedFileWriterFromFiles() throws IOException {
+        try (BufferedWriter bufferedWriter =
+                     Files.newBufferedWriter(Paths.get(getFilePath("test.txt")),
+                             Charset.defaultCharset(),
+                             StandardOpenOption.APPEND, StandardOpenOption.DSYNC)) {
+            bufferedWriter.newLine();
+            bufferedWriter.write("My new file content written with FileWriter");
+            bufferedWriter.flush();
+        }
+    }
+
     private static void writeWithBufferedFileWriter() throws IOException {
-        try(BufferedWriter bufferedWriter= new BufferedWriter(new FileWriter(getFilePath("newFile.bin")))){
-            if(!Files.exists(Paths.get(FILES_LOC.toString(), "newFile.bin"))){
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(getFilePath("newFile.bin")))) {
+            if (!Files.exists(Paths.get(FILES_LOC.toString(), "newFile.bin"))) {
                 throw new IllegalStateException("File was not created by FileWriter!");
             }
             bufferedWriter.write("My new file content written with FileWriter");
@@ -40,8 +54,8 @@ public class FIOWriteExamples extends FIOReadExamples{
 
 
     private static void writeWithFileWriter() throws IOException {
-        try(FileWriter fWriter = new FileWriter(getFilePath("newFile.bin"))){
-            if(!Files.exists(Paths.get(FILES_LOC.toString(), "newFile.bin"))){
+        try (FileWriter fWriter = new FileWriter(getFilePath("newFile.bin"))) {
+            if (!Files.exists(Paths.get(FILES_LOC.toString(), "newFile.bin"))) {
                 throw new IllegalStateException("File was not created by FileWriter!");
             }
             fWriter.write("My new file content written with FileWriter");
