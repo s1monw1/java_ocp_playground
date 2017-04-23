@@ -1,5 +1,6 @@
 package de.swirtz.playground.collections;
 
+import java.io.Console;
 import java.util.NavigableSet;
 import java.util.Set;
 import java.util.TreeSet;
@@ -42,5 +43,8 @@ public class TreeSetStringExamples {
         tail.pollFirst();
         System.out.println("Tailset after pollFirst:"+tail);
         System.out.println("Tree after op on subset: "+ tree);
+
+        Console c = System.console();
+        c.readLine("Print");
     }
 }
