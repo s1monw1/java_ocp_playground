@@ -10,6 +10,7 @@ import java.util.Locale;
 public class NumberFormattingExamples {
 
     public static void main(String[] args) throws ParseException {
+        assert args.length==1 : null;
         double myNum = 123.3255;
         System.out.println("Working with this number: " + myNum);
         NumberFormat nf = NumberFormat.getInstance();
